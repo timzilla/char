@@ -19,9 +19,10 @@ Why "Char"? A thermal printer has no ink; it writes by gently charring the paper
 
 ## Why I made it
 
-I wanted less screen time in the kitchen. A slip of paper on the counter with today's weather, the tide and what's on
-this week is something you glance at and get on with your morning, instead of picking up a phone. A printed recipe
-doesn't lock, dim, or mind butter. And I wanted it all on my terms: it prints when someone asks, never on its own.
+I love cooking, hiking and puzzles, and I don't love my phone. More and more of the things I enjoy had ended up behind
+a screen: the recipe on the counter, the forecast and tides before a hike, the puzzle to work on. Char puts them on
+paper instead, so I can do what I love without picking up my phone, or at least pick it up a lot less. It only prints
+when someone asks, never on its own.
 
 Char is a home project, not a product: MIT licensed, no hosted version, nothing for sale. It pairs nicely with
 [Pixel Pantry](https://github.com/timzilla/pixel-pantry), my recipe shelf, and I hope it's useful to someone else with a
