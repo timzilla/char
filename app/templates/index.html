@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="quick">
+  <h2>Quick note</h2>
+  <form id="quick" data-module="note">
+    <textarea name="text" rows="4" placeholder="Type a note, a list, a reminder. Markdown works: # title, - bullets, - [ ] boxes, qr: a link." required></textarea>
+    <input type="hidden" name="signed" value="on">
+    <div class="row"><button class="btn" type="submit">Print</button><span class="hint">48 characters wide. Prints in a few seconds.</span></div>
+  </form>
+</section>
+
+{% for key, label in (("write", "Write"), ("house", "Around the house"), ("play", "Play"), ("utility", "Utility")) %}{% if groups[key] %}
+<section class="group">
+  <h2>{{ label }}</h2>
+  <div class="tiles">
+    {% for m in groups[key] %}
+    <a class="tile" href="/m/{{ m.name }}"><svg class="ico"><use href="#i-{{ m.icon }}"/></svg><b>{{ m.title }}</b><span>{{ m.blurb }}</span></a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}{% endfor %}
+
+<section class="recent">
+  <h2>Recently printed <a class="more" href="/jobs">all</a></h2>
+  {% include "_jobs.html" %}
+</section>
+{% if job %}<script>document.addEventListener("DOMContentLoaded", () => Char.watch({{ job }}));</script>{% endif %}
+{% endblock %}

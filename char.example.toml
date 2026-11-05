@@ -1,0 +1,41 @@
+# Char settings file. Copy to config/char.toml (mounted at /config) and fill in what you want; everything is optional.
+# Environment variables (CHAR_PRINTER, CHAR_TOKEN, ...) override the same settings here.
+
+# [printer]
+# host = "192.168.1.50"        # your receipt printer's IP address (raw TCP, usually port 9100). Blank = no printer.
+# port = 9100
+
+# [char]
+# url = "https://char.example.com"   # how people reach this Char (used for a QR code on the System slip)
+# token = ""                          # require this token for the web app, API and MCP
+
+# [home_assistant]
+# url = "http://homeassistant.local:8123"   # for the House list module and the char_print event
+# token = ""                                # a long-lived access token (Profile > Security in Home Assistant)
+
+# [pixel_pantry]
+# url = "http://pixel-pantry:8000"          # how Char reaches Pixel Pantry (the Recipe module)
+# public_url = "https://pantry.example.com" # what the QR code on a printed recipe should open
+
+[place]
+# name = "Home"                 # the heading on the tide slip
+# region = "Portland, Maine"    # tells Claude whose news this is, when it picks headlines
+# latitude = 43.66              # weather and sunrise/sunset come from Open-Meteo (free, no key)
+# longitude = -70.25
+# units = "us"                  # or "metric"
+# tide_station = "8418150"      # a NOAA tide station ID (US only; find one at tidesandcurrents.noaa.gov). Blank hides tides.
+
+[brief]
+# local_heading = "Around town"
+# Local news: any RSS or Atom feeds. Nothing here = no local section.
+# local_feeds = [
+#   { name = "My local paper", url = "https://example.com/feed/" },
+# ]
+# National news (default: NPR).
+# national_feeds = [
+#   { name = "NPR", url = "https://feeds.npr.org/1001/rss.xml" },
+# ]
+# Events: calendar (.ics) feeds; most event calendars and Google Calendar have one. Next N days show in the Brief.
+# calendars = [
+#   { name = "Library", url = "https://example.com/events.ics" },
+# ]

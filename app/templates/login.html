@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Sign in · Char{% endblock %}
+{% block body %}
+<section class="quick">
+  <h2>Char is locked</h2>
+  <form method="post" action="/login">
+    <input type="password" name="token" placeholder="Char token" autocomplete="current-password" required autofocus>
+    <div class="row"><button class="btn" type="submit">Unlock</button>
+      <span class="hint">{% if bad %}That isn't it. {% endif %}The token is the CHAR_TOKEN setting. This browser remembers it.</span></div>
+  </form>
+</section>
+{% endblock %}

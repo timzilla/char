@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ m.title }} · Char{% endblock %}
+{% block body %}
+<section class="module">
+  <p class="crumb"><a href="/">Slips</a> / {{ m.title }}</p>
+  <h1><svg class="ico"><use href="#i-{{ m.icon }}"/></svg>{{ m.title }}</h1>
+  <p class="blurb">{{ m.blurb }}</p>
+  <div class="two">
+    <form id="mform" data-module="{{ m.name }}">
+      {% for f in m.fields %}
+      <label class="field {{ f.kind }}">
+        {% if f.kind == 'checkbox' %}<input type="checkbox" name="{{ f.name }}" {% if f.default %}checked{% endif %}><span>{{ f.label }}</span>
+        {% else %}<span>{{ f.label }}</span>
+          {% if f.kind == 'textarea' %}<textarea name="{{ f.name }}" rows="8" placeholder="{{ f.placeholder }}" {% if f.required %}required{% endif %}>{{ f.default }}</textarea>
+          {% elif f.kind == 'select' %}<select name="{{ f.name }}" {% if f.required %}required{% endif %}>{% if not f.required %}<option value="">—</option>{% endif %}{% for v, l in f.options %}<option value="{{ v }}" {% if v == f.default %}selected{% endif %}>{{ l }}</option>{% endfor %}</select>
+          {% else %}<input type="{{ 'number' if f.kind == 'number' else 'text' }}" name="{{ f.name }}" value="{{ f.default }}" placeholder="{{ f.placeholder }}" {% if f.required %}required{% endif %}>{% endif %}
+        {% endif %}
+        {% if f.help %}<small>{{ f.help }}</small>{% endif %}
+      </label>
+      {% endfor %}
+      {% if not m.fields %}<p class="hint">Nothing to set. Just print it.</p>{% endif %}
+      <div class="row"><button class="btn" type="submit">Print</button><button class="btn ghost" type="button" id="previewbtn">Preview</button></div>
+    </form>
+    <div class="paper"><pre id="preview">preview appears here</pre></div>
+  </div>
+</section>
+{% endblock %}

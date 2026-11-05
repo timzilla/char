@@ -1,0 +1,12 @@
+<ul class="jobs">
+  {% for j in jobs %}
+  <li data-id="{{ j.id }}" class="{{ j.status }}">
+    <span class="st" title="{{ j.error or '' }}">{{ {'printed': '✓', 'queued': '…', 'waiting': '⏳', 'failed': '✕'}[j.status] }}</span>
+    <span class="title">{{ j.title or j.module or 'slip' }}</span>
+    <span class="meta">{{ j.source }}{% if j.who %} · {{ j.who.split('@')[0] }}{% endif %} · {{ (j.printed or j.created)|ago }}{% if j.status == 'waiting' %} · {{ j.error }}{% elif j.status == 'failed' %} · failed: {{ j.error }}{% endif %}</span>
+    <button class="re" type="button" data-reprint="{{ j.id }}" title="Print it again">again</button>
+  </li>
+  {% else %}
+  <li class="empty">Nothing printed yet.</li>
+  {% endfor %}
+</ul>

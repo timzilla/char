@@ -1,0 +1,66 @@
+/* Char: a home print service, in a chart-room palette. */
+:root{--bg:#0f2a33;--ink:#f1e4c3;--ink2:rgba(241,228,195,.7);--ink3:rgba(241,228,195,.5);--white:#fff;--gold:#ffd98a;--teal:#5fb3c0;--red:#ff9f7a;--green:#7fd38f;
+  --panel:rgba(10,30,40,.55);--line:rgba(241,228,195,.18);--paper:#f6efdf;--paperink:#1c2b45;
+  --serif:"Libre Baskerville",Georgia,serif;--slab:"Alfa Slab One",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:15px;line-height:1.45;padding-bottom:env(safe-area-inset-bottom)}
+a{color:var(--gold);text-decoration:none}
+h1,h2{font-family:var(--slab);font-weight:400;margin:0}
+.top{display:flex;align-items:center;gap:16px;max-width:1000px;margin:0 auto;padding:14px 16px 6px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-family:var(--slab);font-size:1.2rem;letter-spacing:.16em;text-transform:uppercase}
+.brand img{width:34px;height:34px;border-radius:8px}
+.top nav{display:flex;gap:14px;margin-left:6px}
+.top nav a{font:600 .66rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid rgba(241,228,195,.4);padding-bottom:1px}
+.top nav a.here{color:var(--gold);border-bottom-color:var(--gold)}
+.printer{margin-left:auto;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+.printer i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--green);box-shadow:0 0 8px var(--green)}
+.printer.bad i{background:var(--red);box-shadow:0 0 8px var(--red)}
+main{max-width:1000px;margin:0 auto;padding:6px 16px 60px}
+section{margin:14px 0 20px}
+section h2{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:0 0 10px;display:flex;align-items:baseline;gap:12px}
+section h2::after{content:"";flex:1;border-top:1px solid var(--line);align-self:center}
+section h2 .more{font:600 .62rem var(--mono);letter-spacing:.1em;text-transform:uppercase}
+textarea,input[type=text],input[type=number],input[type=password],select{width:100%;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:8px;color:var(--white);font:inherit;padding:9px 11px;outline:none}
+textarea:focus,input:focus,select:focus{border-color:rgba(255,217,138,.6)}
+textarea{resize:vertical;min-height:90px}
+.row{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.btn{font:600 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--gold);color:#0f2a33;border:2px solid var(--gold);border-radius:999px;padding:9px 20px;cursor:pointer}
+.btn.ghost{background:none;color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.hint{font-size:.7rem;color:var(--ink3)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.tile{display:grid;grid-template-columns:28px 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 13px;color:var(--ink);transition:border-color .15s}
+.tile:hover{border-color:rgba(255,217,138,.7)}
+.tile .ico{width:24px;height:24px;grid-row:1/3;color:var(--teal)}
+.tile b{font-weight:600;color:var(--white)}
+.tile span{font-family:var(--serif);font-size:.74rem;color:var(--ink2);line-height:1.35}
+.jobs{list-style:none;margin:0;padding:0}
+.jobs li{display:grid;grid-template-columns:22px 1fr auto;grid-template-rows:auto auto;column-gap:10px;padding:7px 0;border-bottom:1px dotted rgba(241,228,195,.25);font-size:.78rem;align-items:center}
+.jobs .st{grid-row:1/3;color:var(--green);font-size:1rem;text-align:center}
+.jobs li.waiting .st{color:var(--gold)}.jobs li.failed .st{color:var(--red)}.jobs li.queued .st{color:var(--ink2)}
+.jobs .title{color:var(--white);font-weight:600}
+.jobs .meta{grid-column:2;font-size:.68rem;color:var(--ink2)}
+.jobs .re{grid-column:3;grid-row:1/3;font:600 .62rem var(--mono);letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer}
+.jobs .re:hover{border-color:var(--gold);color:var(--gold)}
+.jobs .empty{display:block;color:var(--ink3);font-family:var(--serif)}
+.crumb{font-size:.7rem;color:var(--ink3);margin:0 0 4px}
+.module h1{font-size:1.3rem;display:flex;align-items:center;gap:10px;letter-spacing:.04em}
+.module h1 .ico{width:26px;height:26px;color:var(--teal)}
+.blurb{font-family:var(--serif);color:var(--ink2);font-size:.86rem;margin:4px 0 14px}
+.two{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:820px){.two{grid-template-columns:1fr 1fr}}
+.field{display:block;margin:0 0 12px}
+.field>span{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:5px}
+.field.checkbox{display:flex;align-items:center;gap:10px}
+.field.checkbox>span{margin:0;text-transform:none;letter-spacing:0;font-size:.82rem;color:var(--ink)}
+.field.checkbox input{width:18px;height:18px;accent-color:var(--gold)}
+.field small{display:block;font-size:.66rem;color:var(--ink3);margin-top:4px}
+.paper{background:var(--paper);border-radius:6px 6px 2px 2px;padding:18px 16px 26px;box-shadow:0 10px 30px rgba(0,0,0,.35);position:relative;max-width:420px;justify-self:center;width:100%;
+  -webkit-mask:linear-gradient(#000 calc(100% - 10px),transparent calc(100% - 10px)),radial-gradient(circle at 6px 100%,transparent 6px,#000 6.5px) bottom/12px 12px repeat-x;-webkit-mask-composite:source-over;mask-composite:add}
+.paper pre{margin:0;font:12.5px/1.35 var(--mono);color:var(--paperink);white-space:pre-wrap;word-break:break-word}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:rgba(10,30,40,.95);color:var(--ink);border:1px solid rgba(255,217,138,.5);border-radius:999px;padding:9px 18px;font-size:.76rem;z-index:50;max-width:90vw}
+#toast.bad{border-color:var(--red);color:var(--red)}
+@media(max-width:600px){.top{flex-wrap:wrap;gap:10px 14px}.printer{margin-left:0;width:100%}.brand{font-size:1.05rem}.tiles{grid-template-columns:1fr}}
+.paper pre img.slipimg{display:block;margin:6px auto;image-rendering:pixelated;filter:grayscale(1) contrast(1.4);mix-blend-mode:multiply}
+.paper{container-type:inline-size}
+.paper pre{font-size:min(12.5px,3.4cqw);white-space:pre;overflow-x:auto}

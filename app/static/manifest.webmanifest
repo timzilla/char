@@ -1,0 +1,22 @@
+{
+  "name": "Char",
+  "short_name": "Char",
+  "description": "A home print service: slips for a kitchen receipt printer.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f2a33",
+  "theme_color": "#0f2a33",
+  "icons": [
+    {"src": "/static/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/static/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/static/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {"title": "title", "text": "text", "url": "url", "files": [{"name": "image", "accept": ["image/*"]}]}
+  }
+}

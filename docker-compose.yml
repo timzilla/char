@@ -1,0 +1,25 @@
+# Char: one container that owns a network receipt printer. Settings go in a .env file next to this one, or straight in
+# the environment block below; feeds and calendars for the Brief go in config/char.toml (copy char.example.toml).
+# Uses the published image; `docker compose up -d --build` builds from this checkout instead.
+services:
+  char:
+    image: ghcr.io/timzilla/char:latest
+    build: .
+    container_name: char
+    restart: unless-stopped
+    ports:
+      - "8096:8000"
+    environment:
+      TZ: ${TZ:-Etc/UTC}                      # your time zone, e.g. America/Chicago
+      CHAR_PRINTER: ${CHAR_PRINTER:-}       # the printer's IP address; blank = no printer (jobs are kept, nothing prints)
+      CHAR_PRINTER_PORT: ${CHAR_PRINTER_PORT:-9100}
+      CHAR_URL: ${CHAR_URL:-}               # optional: Char's own address, for QR codes
+      CHAR_HA: ${CHAR_HA:-}                 # optional: Home Assistant, e.g. http://homeassistant.local:8123
+      CHAR_KITCHEN: ${CHAR_KITCHEN:-}       # optional: Pixel Pantry, e.g. http://pixel-pantry:8000
+      CHAR_KITCHEN_PUBLIC: ${CHAR_KITCHEN_PUBLIC:-}   # optional: Pixel Pantry as phones reach it (recipe QR codes)
+    env_file:                 # secrets, one per line, all optional:
+      - path: .env            #   CHAR_TOKEN=...  HA_TOKEN=...  ANTHROPIC_API_KEY=sk-ant-...
+        required: false
+    volumes:
+      - ./data:/data          # the job history (char.db)
+      - ./config:/config      # char.toml and plugins/ (both optional)
